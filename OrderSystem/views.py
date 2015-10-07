@@ -18,11 +18,15 @@ def login(request):
             username = userform.cleaned_data['username']
             password = userform.cleaned_data['password']
             #将获取的表单与数据库作比较
-            user = User.objects.filter(username = username, password = password)
-            if user:
-                return render_to_response('success.html')
+            try:
+                user = User.objects.get(username = username)
+            except:
+                return render_to_response('login.html', {'userform':userform, 'error':'用户名不存在！'})
             else:
-                return HttpResponseRedirect('/login/')
+                if user.password == password:
+                    return render_to_response('success.html')
+                else:
+                    return render_to_response('login.html', {'userform':userform, 'error':'密码错误！'})
     else:
         userform = UserForm()
     return render_to_response('login.html', {'userform':userform})

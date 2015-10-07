@@ -2,6 +2,11 @@
 <html>
 <head>
 <title>登陆</title>
+<script type="text/javascript">
+    var error = {{ error }};
+    alert(List);
+</script>
+
 <!-- Custom Theme files -->
 
 <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />  
@@ -22,18 +27,21 @@
 	<div class="login-top">
 		<h1>登录表单</h1>
 		<form method = 'post' enctype="multipart/form-data">
-		{{userform.as_p}}
-		<!--<form>
-			<input type="text" value="用户账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户账号';}">
-			<input type="password" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">-->
+		<!--{{userform.as_p}}-->
+		<form>
+			<input type="text" name=username value="用户账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户账号';}">
+			<input type="password" name=password value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
 	    <div class="forgot">
-	    	<a href="#">忘记密码</a>
-	    	<input type="submit" value="登录" >
+			<div style = "text-align:left;float:left">
+				<font color="red">&nbsp&nbsp&nbsp&nbsp&nbsp{{error|safe}}</font>
+			</div>
+			<div>
+				<input type="submit" value="登录" >
+			</div>
 	    </div>
 		</form>
 	</div>
 	<div class="login-bottom">
-		<h3>新用户 &nbsp;<a href="#">注册</a>&nbsp 这里</h3>
 	</div>
 </div>
 </body>
