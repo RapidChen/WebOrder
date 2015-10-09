@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>登陆成功!</title>
+<title>{{product.name}}</title>
+<script type="text/javascript">
+</script>
+
 <!-- Custom Theme files -->
 
 <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />  
@@ -17,14 +20,24 @@
 <!--Google Fonts-->
 </head>
 <body>
-	<div class="login">
-	<h2>登 陆</h2>
+<div class="login">
+	<h2>商品详情</h2>
 	<div class="login-top">
-		<h1>恭喜！登陆成功！</h1>
+		<h1>{{product.name}}</h1>
+		<br/>
+		<img src={{product.picture}}/>
+		<br/>
+		零售价:{{product.retail}}
+		<br/>
+		重量:{{product.weight}}
+		<br/>
+		详情:
+		<br/>
+		{{product.intro}}
 	</div>
 	<div class="login-bottom">
-		<h3><a href="list/">点此</a>&nbsp进入系统</h3>
+	<h3><a href="../../list">返回列表</h3>
 	</div>
-	</div>
+</div>
 </body>
 </html>

@@ -4,7 +4,6 @@
 <title>登陆</title>
 <script type="text/javascript">
     var error = {{ error }};
-    alert(List);
 </script>
 
 <!-- Custom Theme files -->
@@ -27,7 +26,6 @@
 	<div class="login-top">
 		<h1>登录表单</h1>
 		<form method = 'post' enctype="multipart/form-data">
-		<!--{{userform.as_p}}-->
 		<form>
 			<input type="text" name=username value="用户账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户账号';}">
 			<input type="password" name=password value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">

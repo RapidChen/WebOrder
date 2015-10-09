@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>登陆成功!</title>
+<title>商品列表</title>
 <!-- Custom Theme files -->
 
 <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />  
@@ -17,14 +17,20 @@
 <!--Google Fonts-->
 </head>
 <body>
-	<div class="login">
-	<h2>登 陆</h2>
+<div class="login">
+	<h2>商品列表</h2>
 	<div class="login-top">
-		<h1>恭喜！登陆成功！</h1>
+	<ul>
+		{% for product in  products %}
+			<li>
+			<a href="{{ product.get_absolute_url }}">{{ product.name}}&nbsp&nbsp&nbsp&nbsp单价:{{product.retail}}元&nbsp&nbsp&nbsp&nbsp重量:{{product.weight}}</a>
+			</li>
+		{% endfor %}
+	<ul>
 	</div>
 	<div class="login-bottom">
-		<h3><a href="list/">点此</a>&nbsp进入系统</h3>
+	<h3><a href="#">历史订单</h3>
 	</div>
-	</div>
+</div>
 </body>
 </html>

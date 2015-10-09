@@ -1,13 +1,17 @@
 #coding:utf-8
 from django.db import models
+from django.core.urlresolvers import reverse
 
 class Product(models.Model):
     pid = models.IntegerField('商品ID', primary_key=True, auto_created=True, editable=False)
     name = models.CharField('品名', max_length=256)
-    picture = models.ImageField('图片')
+    picture = models.ImageField('图片', upload_to='./common_static/pic')
     weight = models.IntegerField ('重量')
     retail = models.DecimalField('零售价', decimal_places=2, max_digits=10)
     intro = models.TextField('介绍', default='')
+
+    def get_absolute_url(self):
+        return reverse('product', args=(str(self.pid),))
 
     def __str__(self):
         return self.name

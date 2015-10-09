@@ -1,7 +1,8 @@
 #coding:utf-8
 from django.shortcuts import render,render_to_response
 from django.http import HttpResponseRedirect
-from .models import User
+from django.http import HttpResponse
+from .models import *
 from django import forms
 
 #定义用户表单模型
@@ -30,5 +31,16 @@ def login(request):
     else:
         userform = UserForm()
     return render_to_response('login.html', {'userform':userform})
+
+#主页
+def index(request):
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products': products})
+
+#商品
+def product_detail(request, product_pid):
+    product = Product.objects.get(pid = product_pid)
+    product.picture = str(product.picture).replace('common_','/')
+    return render(request, 'product.html', {'product': product})
 
 # Create your views here.

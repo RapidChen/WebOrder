@@ -19,5 +19,5 @@ from WebOrder import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/', include('OrderSystem.urls')),
+    url(r'^', include('OrderSystem.urls')),
 ]
