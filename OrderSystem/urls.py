@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^list/$', views.index, name='list'),
     #商品详情页面
     url(r'^products/(?P<product_pid>[^/]+)/$', 'OrderSystem.views.product_detail', name='product'),
+    #历史订单
+    url(r'^orderlist/$', views.order, name='orderlist'),
 )
