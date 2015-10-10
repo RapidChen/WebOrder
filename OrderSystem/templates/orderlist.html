@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>商品列表</title>
+<title>历史订单</title>
 <!-- Custom Theme files -->
 
 <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />  
@@ -18,18 +18,18 @@
 </head>
 <body>
 <div class="login">
-	<h2>商品列表</h2>
+	<h2>历史订单</h2>
 	<div class="login-top">
 	<ul>
-		{% for product in  products %}
+		{% for order in  orders %}
 			<li>
-			<a href="{{ product.get_absolute_url }}">{{ product.name}}&nbsp&nbsp&nbsp&nbsp单价:{{product.retail}}元&nbsp&nbsp&nbsp&nbsp重量:{{product.weight}}</a>
+			<a href="#">{{ order.listid}}&nbsp&nbsp&nbsp&nbsp单价:{{order.shipcost}}元&nbsp&nbsp&nbsp&nbsp总价:{{order.total}}</a>
 			</li>
 		{% endfor %}
 	<ul>
 	</div>
 	<div class="login-bottom">
-	<h3><a href="../orderlist">历史订单</h3>
+	<h3><a href="../list">商品列表</h3>
 	</div>
 </div>
 </body>
