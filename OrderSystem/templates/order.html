@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>历史订单</title>
+<title>{{product.name}}</title>
+<script type="text/javascript">
+</script>
+
 <!-- Custom Theme files -->
 
 <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />  
@@ -18,18 +21,28 @@
 </head>
 <body>
 <div class="login">
-	<h2>历史订单</h2>
+	<h2>订单详情</h2>
 	<div class="login-top">
-	<ul>
-		{% for order in  orders %}
-			<li>
-			<a href="{{ order.get_absolute_url }}">订单号：{{ order.listid}}&nbsp&nbsp&nbsp&nbsp提交日期:{{order.date}}&nbsp&nbsp&nbsp&nbsp总价:{{order.total}}元</a>
-			</li>
+		<h1>订单号：{{order.listid}}</h1>
+		订单日期：{{order.date}}
+		<br/>
+		邮寄方式：{{order.ship}}
+		<br/>
+		总重：{{order.weight}}
+		<br/>
+		运费：{{order.shipcost}}元
+		<br/>
+		总价格：{{order.total}}元
+		<br/>
+		商品数量：
+		<br/>
+		{% for detail in details %}
+		{{detail.productid}}&nbsp&nbsp&nbsp&nbsp{{detail.amount}}
+		<br/>
 		{% endfor %}
-	<ul>
 	</div>
 	<div class="login-bottom">
-	<h3><a href="../logout" style="float:left">登出</a><a href="../list">商品列表</a></h3>
+	<h3><a href="../../logout" style="float:left">登出</a><a href="../../orderlist">返回列表</a></h3>
 	</div>
 </div>
 </body>

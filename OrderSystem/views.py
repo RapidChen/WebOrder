@@ -1,6 +1,6 @@
 #coding:utf-8
 from django.shortcuts import render,render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,Http404
 from django.http import HttpResponse
 from .models import *
 from django import forms
@@ -40,6 +40,9 @@ def login(request):
                 else:
                     return render_to_response('login.html', {'userform':userform, 'error':'密码错误！'})
     else:
+        username = checkcookie(request)
+        if username != None:
+            return HttpResponseRedirect('/list/')
         userform = UserForm()
     return render_to_response('login.html', {'userform':userform})
 
@@ -67,5 +70,25 @@ def order(request):
         return HttpResponseRedirect('/')
     orders = OrderList.objects.filter(user__username = username)
     return render(request, 'orderlist.html', {'orders': orders})
+
+#订单详情
+def order_detail(request, order_listid):
+    username = checkcookie(request)
+    if username == None:
+        return HttpResponseRedirect('/')
+    try:
+        order = OrderList.objects.get(listid = order_listid)
+    except:
+        raise Http404
+    if username != order.user.username:
+        raise Http404
+    details = OrderDetail.objects.filter(orderid = order_listid)
+    return render(request, 'order.html', {'order': order, 'details': details})
+
+#登出
+def logout(request):
+    response = HttpResponseRedirect('/')
+    response.delete_cookie('username')
+    return response
 
 # Create your views here.

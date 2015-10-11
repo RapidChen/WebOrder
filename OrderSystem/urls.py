@@ -12,4 +12,8 @@ urlpatterns = patterns('',
     url(r'^products/(?P<product_pid>[^/]+)/$', 'OrderSystem.views.product_detail', name='product'),
     #历史订单
     url(r'^orderlist/$', views.order, name='orderlist'),
+    #订单详情页面
+    url(r'^orders/(?P<order_listid>[^/]+)/$', 'OrderSystem.views.order_detail', name='order'),
+    #登出
+    url(r'^logout/$', 'OrderSystem.views.logout', name='logout'),
 )
