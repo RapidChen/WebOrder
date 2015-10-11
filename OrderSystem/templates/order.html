@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>登陆</title>
-
+<title>{{product.name}}</title>
+<script type="text/javascript">
+</script>
 
 <!-- Custom Theme files -->
 
@@ -20,23 +21,28 @@
 </head>
 <body>
 <div class="login">
-	<h2>登 陆</h2>
+	<h2>订单详情</h2>
 	<div class="login-top">
-		<h1>登录表单</h1>
-		<form method = 'post' enctype="multipart/form-data">
-			<input type="text" name=username value="用户账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户账号';}">
-			<input type="password" name=password value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
-	    <div class="forgot">
-			<div style = "text-align:left;float:left">
-				<font color="red">&nbsp&nbsp&nbsp&nbsp&nbsp{{error|safe}}</font>
-			</div>
-			<div>
-				<input type="submit" value="登录" >
-			</div>
-	    </div>
-		</form>
+		<h1>订单号：{{order.listid}}</h1>
+		订单日期：{{order.date}}
+		<br/>
+		邮寄方式：{{order.ship}}
+		<br/>
+		总重：{{order.weight}}
+		<br/>
+		运费：{{order.shipcost}}元
+		<br/>
+		总价格：{{order.total}}元
+		<br/>
+		商品数量：
+		<br/>
+		{% for detail in details %}
+		{{detail.productid}}&nbsp&nbsp&nbsp&nbsp{{detail.amount}}
+		<br/>
+		{% endfor %}
 	</div>
 	<div class="login-bottom">
+	<h3><a href="../../logout" style="float:left">登出</a><a href="../../cart" style="padding-right:112px">购物车</a><a href="../../orderlist">返回列表</a></h3>
 	</div>
 </div>
 </body>

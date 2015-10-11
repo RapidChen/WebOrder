@@ -2,8 +2,6 @@
 <html>
 <head>
 <title>{{product.name}}</title>
-<script type="text/javascript">
-</script>
 
 <!-- Custom Theme files -->
 
@@ -34,9 +32,16 @@
 		详情:
 		<br/>
 		{{product.intro}}
+		<br/><br/>
+		<form method = 'post'>
+			请输入购买数量:<br/><input name="amount" type="text"  onkeyup='this.value=this.value.replace(/\D/gi,"")'/>
+		<div class="forgot">
+			<input type="submit" value="加入购物车"/>
+		</div>
+		</form>
 	</div>
 	<div class="login-bottom">
-	<h3><a href="../../list">返回列表</h3>
+	<h3><a href="../../logout" style="float:left">登出</a><a href="../../cart" style="padding-right:112px">购物车</a><a href="../../list">返回列表</a></h3>
 	</div>
 </div>
 </body>

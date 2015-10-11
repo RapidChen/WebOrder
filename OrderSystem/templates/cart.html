@@ -1,9 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>登陆</title>
-
-
+<title>购物车</title>
 <!-- Custom Theme files -->
 
 <link rel="stylesheet" type="text/css" media="all" href="/static/css/style.css" />  
@@ -20,23 +18,31 @@
 </head>
 <body>
 <div class="login">
-	<h2>登 陆</h2>
+	<h2>购物车</h2>
 	<div class="login-top">
-		<h1>登录表单</h1>
-		<form method = 'post' enctype="multipart/form-data">
-			<input type="text" name=username value="用户账号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户账号';}">
-			<input type="password" name=password value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
-	    <div class="forgot">
-			<div style = "text-align:left;float:left">
-				<font color="red">&nbsp&nbsp&nbsp&nbsp&nbsp{{error|safe}}</font>
-			</div>
-			<div>
-				<input type="submit" value="登录" >
-			</div>
-	    </div>
-		</form>
+	<h1>购物车清单</h1>
+	<form id = "form1" name = "form1" method = 'post'>
+	<ul>
+	{%for product in products%}
+		<li><label><input name="{{product.pid}}" type="checkbox" value="{{product.pid}}" /></label> {{product.name}}&nbsp&nbsp&nbsp&nbsp&nbsp {{product.amount}}</li>
+	{%empty%}
+		<h1>购物车为空！</h1>
+	{%endfor%}
+	</ul>
+	<br/>
+	总价:{{total}}元
+	<br/>
+	总重:{{weight}}
+	<br/>
+	空运价格:{{air}}元
+	<br/>
+	陆运价格:{{land}}元
+	<br/><br/>
+	<input type="submit" value="删除选中商品" />
+	</form>
 	</div>
 	<div class="login-bottom">
+	<h3><a href="../logout" style="float:left">登出</a><a href="../empty" style="float:left">&nbsp&nbsp&nbsp&nbsp&nbsp清空</a><a href="#">提交订单&nbsp&nbsp&nbsp&nbsp&nbsp</a><a href="../list">商品列表</a></h3>
 	</div>
 </div>
 </body>
